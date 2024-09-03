@@ -32,7 +32,7 @@
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-repo/KafkaStreamsPoC.git
+    git clone https://github.com/HenriqueRedCloud/KafkaStreamsPoC.git
     cd KafkaStreamsPoC
     ```
 
