@@ -1,6 +1,8 @@
 using Confluent.Kafka;
 using KafkaStreamsPoC.Models;
 using Newtonsoft.Json;
+using System.Globalization;
+using CsvHelper;
 
 namespace KafkaStreamsPoC.Services
 {
@@ -18,6 +20,18 @@ namespace KafkaStreamsPoC.Services
         {
             var jsonData = JsonConvert.SerializeObject(data);
             await _producer.ProduceAsync(topic, new Message<Null, string> { Value = jsonData });
+        }
+
+        public async Task BulkProduceAsync(string topic, string filePath)
+        {
+            using var reader = new StreamReader(filePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var records = csv.GetRecords<ProductData>();
+
+            foreach (var record in records)
+            {
+                await ProduceAsync(topic, record);
+            }
         }
     }
 }

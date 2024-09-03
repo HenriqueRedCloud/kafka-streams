@@ -6,6 +6,6 @@ namespace KafkaStreamsPoC.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        // Add other relevant properties
+        public string Source { get; set; }
     }
 }

@@ -6,13 +6,14 @@ namespace KafkaStreamsPoC.Services
     {
         public bool IsValidProductData(ProductData data)
         {
-            // Implement validation logic
-            return data != null && data.Price > 0 && data.Stock >= 0;
+            return data != null && !string.IsNullOrWhiteSpace(data.ProductId) &&
+                   data.Price > 0 && data.Stock >= 0;
         }
 
         public ProductData MapToStandardFormat(ProductData data)
         {
             // Implement mapping logic if needed
+            data.Name = data.Name?.ToUpper();
             return data;
         }
     }

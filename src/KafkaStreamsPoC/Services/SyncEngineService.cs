@@ -6,7 +6,8 @@ namespace KafkaStreamsPoC.Services
     {
         public void PushToMarketplaceBackend(ProductData data)
         {
-            // Implement the logic to push data to the marketplace backend
+            // Implement logic to push data to the marketplace backend
+            Console.WriteLine($"Data synced to marketplace: {data.ProductId}");
         }
     }
 }
